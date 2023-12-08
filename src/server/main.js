@@ -1,7 +1,11 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import { config } from "dotenv";
 import pg from "pg";
+
 const { Pool } = pg;
+
+config();
 
 const app = express();
 
@@ -12,6 +16,10 @@ const pool = new Pool({
 	password: "213262",
 	port: 5432,
 });
+
+// const pool = new pg.Pool({
+// 	connectionString: process.env.DATABASE_URL,
+// });
 
 app.use(express.json());
 
